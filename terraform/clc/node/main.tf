@@ -64,7 +64,7 @@ resource "clc_public_ip" "ip" {
     destination = "/root/.ssh/authorized_keys"
   }
   provisioner "remote-exec" {
-    inline = [ "yum remove -y open-vm-tools" ]
+    inline = [ "yum -y swap -- install open-vm-tools -- remove open-vm-tools-deploypkg" ]
   }
 }
 
