@@ -2,6 +2,7 @@
 
 # input variables
 variable role {}
+variable name {}
 variable count {}
 variable group_id {}
 variable location { default = "CA1" }
@@ -18,7 +19,7 @@ variable ssh_key { default = "~/.ssh/id_rsa.pub" }
 resource "clc_server" "node" {
   count = "${var.count}"
   group_id = "${var.group_id}"
-  name_template = "-${var.role}"
+  name_template = "${var.name}"
   source_server_id = "${var.image_name}"
   cpu = "${var.cpu}"
   memory_mb = "${var.mem}"
